@@ -69,7 +69,7 @@ Function.prototype.newbind = function (context) {
 let obj1 = {
   x: 2,
   printX: function () {
-    console.log(x);
+    console.log(this.x);
   }
 };
 let obj2 = {
