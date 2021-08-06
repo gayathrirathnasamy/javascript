@@ -55,3 +55,25 @@ function x() {
 var z = x();
 console.log(z);
 z();
+
+//Bind polyfill and example
+Function.prototype.newbind = function (context) {
+  var currentContext = this;
+  var currentArgs = Array.prototype.slice.call(arguments, 1);
+  return function () {
+    var args = Array.prototype.slice.call(arguments);
+    currentContext.apply(context, currentArgs.concat(args));
+  };
+};
+
+let obj1 = {
+  x: 2,
+  printX: function () {
+    console.log(x);
+  }
+};
+let obj2 = {
+  x: 5
+};
+let bindCheck = obj1.printX.newbind(obj2);
+bindCheck();
