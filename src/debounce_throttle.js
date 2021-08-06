@@ -42,3 +42,16 @@ document.getElementById("btn").addEventListener(
     console.log("Printing");
   }, 1000)
 );
+
+//Closure example
+function x() {
+  var a = 7;
+  function y() {
+    console.log(a);
+  }
+  return y;
+}
+
+var z = x();
+console.log(z);
+z();
